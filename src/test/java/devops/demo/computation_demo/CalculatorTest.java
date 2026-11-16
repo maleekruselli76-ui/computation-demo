@@ -74,6 +74,18 @@ public class CalculatorTest {
 		assertEquals(expected, result);
 	}
 	
+	@ParameterizedTest(name = "{0} / {1} = {2}")
+	@CsvSource( {
+		"100, 2, 50",
+		"-100, 2, -50",
+		"9, 3, 3"
+	})
+	
+	public void divide_twoNumbers(int input1, int input2, int expected) {
+		int result = calculator.divide(input1, input2);
+		assertEquals(expected, result);
+	}
+	
 	@Test
 	public void divide_byZero() {	
 		assertThrows(IllegalArgumentException.class, () -> calculator.divide(10, 0));
